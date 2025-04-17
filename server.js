@@ -11,7 +11,10 @@ app.use(bodyParser.json())
 app.use(cors())
 
 const { MongoClient } = require('mongodb')
-const client = new MongoClient(process.env.MONGO_URI)
+const client = new MongoClient(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 const database = 'MyPasswords';
 
 client.connect()
